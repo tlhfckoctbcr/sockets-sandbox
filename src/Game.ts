@@ -1,6 +1,7 @@
 import Player from "./Player";
 
 export default class Game {
+  id: string = '';
   players: Player[] = [];
 
   connectPlayer(player: Player) {

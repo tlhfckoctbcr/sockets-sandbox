@@ -1,7 +1,9 @@
 import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
 import WebSocket from "ws";
 
-import { Message, MessageType } from "./Messages";
+import { Message, MessageType } from "./Message";
 import Player from "./Player";
 import Game from "./Game";
 
@@ -40,18 +42,19 @@ ws.on("message", (message: string) => {
 });
 
 const app = express();
+const router = express.Router();
 
-app.use("/:gameId", (req, res) => {
-  const { gameId } = req.params;
-  const message: Message = { type: MessageType.Join, gameId };
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-  ws.send(JSON.stringify(message));
-  res.end();
-});
+app.use(cors());
 
-app.use("/ready", (req, res) => {
-  const message = {};
-  ws.send(JSON.stringify(message));
-});
+app.get('/start', (req, res) => {
+  const game = new Game();
+  game.id = '1234';
+  console.log(game);
+  res.json(game);
+})
 
-app.listen(8080);
+app.use("/", router);
+app.listen(8000);
