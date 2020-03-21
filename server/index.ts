@@ -1,11 +1,6 @@
-import express from "express";
-import cors from "cors";
-import bodyParser from "body-parser";
 import WebSocket from "ws";
 
-import { Message, MessageType } from "./Message";
-import Player from "./Player";
-import Game from "./Game";
+import { Message, MessageType } from "./models/Message";
 
 const opts: WebSocket.ClientOptions = {
   origin: "https://websocket.org"
@@ -40,21 +35,3 @@ ws.on("message", (message: string) => {
     }
   }
 });
-
-const app = express();
-const router = express.Router();
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(cors());
-
-app.get('/start', (req, res) => {
-  const game = new Game();
-  game.id = '1234';
-  console.log(game);
-  res.json(game);
-})
-
-app.use("/", router);
-app.listen(8000);
