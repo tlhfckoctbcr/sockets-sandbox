@@ -1,5 +1,5 @@
 import WebSocket from "ws";
-
+import app from "./server";
 import { Message, MessageType } from "./models/Message";
 
 const opts: WebSocket.ClientOptions = {
@@ -35,3 +35,5 @@ ws.on("message", (message: string) => {
     }
   }
 });
+
+app.listen(8000);

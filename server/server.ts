@@ -14,4 +14,4 @@ app.use(cors());
 
 app.use('/game', gameController);
 
-app.listen(8000);
+export default app;
