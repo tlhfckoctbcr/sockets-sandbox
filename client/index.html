@@ -7,8 +7,17 @@
 </head>
 <body>
   <h1>Circle Wars</h1>
-  <button id="start">Start</button>
-
-  <script src="./index.ts"></script>
+  <form id="newGame">
+    <label for="playerName">Player Name:</label>
+    <input 
+      id="playerName" 
+      name="playerName" 
+      type="text" 
+      placeholder="Type name here..."
+      required
+    />
+    <button type="submit">New Game</button>
+  </form>
 </body>
+<script src="./index.ts"></script>
 </html>

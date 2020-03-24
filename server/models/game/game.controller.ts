@@ -4,9 +4,10 @@ import gameService from "./game.service";
 
 const router = express.Router();
 
-async function startGame(req: Request, res: Response): Promise<void> {
+async function newGame(req: Request, res: Response): Promise<void> {
   try {
-    const newGame = await gameService.startGame();
+    const { playerName } = req.body;
+    const newGame = await gameService.newGame(playerName);
     res.json(newGame);
   } catch(e) {
     console.error(e);
@@ -14,5 +15,5 @@ async function startGame(req: Request, res: Response): Promise<void> {
 }
 
 // Routes
-router.get("/start", startGame);
+router.post("/", newGame);
 export default router;
