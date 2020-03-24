@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 import Game from './game.model'
 import Player from '../player/player.model';
 
@@ -10,7 +12,7 @@ function newGame(playerName: string): Game {
 }
 
 function generateGameId(): string {
-    return '1234';
+    return uuid();
 }
 
 function newPlayer(name: string, id: number): Player {
