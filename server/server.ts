@@ -4,6 +4,7 @@ import cors from "cors";
 
 // Controllers
 import gameController from "./models/game/game.controller";
+import Lobby from "./models/lobby/lobby.model";
 
 const app = express();
 

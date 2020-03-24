@@ -8,15 +8,26 @@
 <body>
   <h1>Circle Wars</h1>
   <form id="newGame">
-    <label for="playerName">Player Name:</label>
+    <label for="newPlayerName">Player Name:</label>
     <input 
-      id="playerName" 
-      name="playerName" 
+      id="newPlayerName" 
+      name="newPlayerName" 
       type="text" 
       placeholder="Type name here..."
       required
     />
     <button type="submit">New Game</button>
+  </form>
+  <form id="joinGame">
+    <label for="joinPlayerName">Player Name:</label>
+    <input 
+      id="joinPlayerName" 
+      name="joinPlayerName" 
+      type="text" 
+      placeholder="Type name here..."
+      required
+    />
+    <button type="submit">Join Game</button>
   </form>
 </body>
 <script src="./index.ts"></script>

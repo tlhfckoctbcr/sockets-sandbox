@@ -7,6 +7,23 @@ function newGame(playerName: string): Game {
     const game = new Game();
     game.id = generateGameId();
     game.connectPlayer(newPlayer(playerName, 1));
+    global.lobby.addGameToLobby(game);
+
+    return game;
+}
+
+function getGame(gameId: string): Game {
+    const game = global.lobby.activeGames.find((game) => game.id === gameId);
+    if (!game) throw new Error(`No active game with the ID ${gameId} found.`);
+    return game;
+}
+
+function addPlayerToGame(gameId: string, playerName: string): Game | undefined {
+    const game = getGame(gameId);
+    if (!game) return;
+ 
+    const newPlayer = new Player(playerName, game.players.length + 1);
+    game.players.push(newPlayer);
 
     return game;
 }
@@ -21,4 +38,6 @@ function newPlayer(name: string, id: number): Player {
 
 export default {
     newGame,
+    getGame,
+    addPlayerToGame
 }

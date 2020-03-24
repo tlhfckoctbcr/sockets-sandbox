@@ -1,4 +1,4 @@
-import Player from "./Player";
+import Player from "../player/player.model";
 
 export default class Game {
   id: string = '';
